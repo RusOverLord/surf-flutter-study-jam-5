@@ -1,0 +1,25 @@
+name: local_database
+description: "A new Flutter package project."
+version: 0.0.1
+
+environment:
+  sdk: 3.2.3 # Dart SDK version
+  flutter: 3.16.3 # Flutter SDK version
+
+dependencies:
+  drift: ^2.15.0
+  flutter:
+    sdk: flutter
+  path: ^1.8.3
+  sqflite: ^2.3.2
+  sqflite_common_ffi: ^2.3.2+1
+  sqlite3_flutter_libs: ^0.5.20
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.4.8
+  drift_dev: ^2.15.0
+
+flutter:

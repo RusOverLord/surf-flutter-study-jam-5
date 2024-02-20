@@ -1,0 +1,12 @@
+import 'package:local_database/src/model/model.dart';
+
+-- TABLES
+
+-- Table: memes
+CREATE TABLE memes (
+    id           INTEGER PRIMARY KEY    NOT NULL,
+    image_type   ENUMNAME(ImageType)    NOT NULL,
+    image_source TEXT                   NOT NULL,
+    text_value   TEXT                   NOT NULL,
+    font_size    REAL
+);

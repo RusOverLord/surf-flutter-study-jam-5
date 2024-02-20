@@ -1,0 +1,4 @@
+import 'package:local_database/drift/tables.drift';
+
+findMemeById:
+SELECT * FROM memes WHERE id = :id;
