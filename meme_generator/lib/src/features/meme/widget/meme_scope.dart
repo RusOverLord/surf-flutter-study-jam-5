@@ -12,9 +12,11 @@ class MemeScope extends StatefulWidget {
   const MemeScope({
     super.key,
     required this.child,
+    this.memeOverride,
   });
 
   final Widget child;
+  final Meme? memeOverride;
 
   static MemeBlocDelegate get bloc => const MemeBlocDelegate();
 
@@ -33,6 +35,7 @@ class _MemeScopeState extends State<MemeScope> {
 
     _bloc?.close();
     _bloc = MemeBloc(
+      meme: widget.memeOverride,
       repository: context.repository.memeRepository,
     );
   }

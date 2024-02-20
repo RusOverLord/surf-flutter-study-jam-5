@@ -20,32 +20,38 @@ mixin _$MemeBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Meme meme) insert,
+    required TResult Function(Meme meme) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Meme meme)? insert,
+    TResult? Function(Meme meme)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Meme meme)? insert,
+    TResult Function(Meme meme)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MemeBlocEventInsert value) insert,
+    required TResult Function(MemeBlocEventUpdate value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MemeBlocEventInsert value)? insert,
+    TResult? Function(MemeBlocEventUpdate value)? update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MemeBlocEventInsert value)? insert,
+    TResult Function(MemeBlocEventUpdate value)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -169,6 +175,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Meme meme) insert,
+    required TResult Function(Meme meme) update,
   }) {
     return insert(meme);
   }
@@ -177,6 +184,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Meme meme)? insert,
+    TResult? Function(Meme meme)? update,
   }) {
     return insert?.call(meme);
   }
@@ -185,6 +193,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Meme meme)? insert,
+    TResult Function(Meme meme)? update,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -197,6 +206,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MemeBlocEventInsert value) insert,
+    required TResult Function(MemeBlocEventUpdate value) update,
   }) {
     return insert(this);
   }
@@ -205,6 +215,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MemeBlocEventInsert value)? insert,
+    TResult? Function(MemeBlocEventUpdate value)? update,
   }) {
     return insert?.call(this);
   }
@@ -213,6 +224,7 @@ class _$MemeBlocEventInsertImpl extends MemeBlocEventInsert {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MemeBlocEventInsert value)? insert,
+    TResult Function(MemeBlocEventUpdate value)? update,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -232,6 +244,149 @@ abstract class MemeBlocEventInsert extends MemeBlocEvent {
   @override
   @JsonKey(ignore: true)
   _$$MemeBlocEventInsertImplCopyWith<_$MemeBlocEventInsertImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MemeBlocEventUpdateImplCopyWith<$Res>
+    implements $MemeBlocEventCopyWith<$Res> {
+  factory _$$MemeBlocEventUpdateImplCopyWith(_$MemeBlocEventUpdateImpl value,
+          $Res Function(_$MemeBlocEventUpdateImpl) then) =
+      __$$MemeBlocEventUpdateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Meme meme});
+
+  @override
+  $MemeCopyWith<$Res> get meme;
+}
+
+/// @nodoc
+class __$$MemeBlocEventUpdateImplCopyWithImpl<$Res>
+    extends _$MemeBlocEventCopyWithImpl<$Res, _$MemeBlocEventUpdateImpl>
+    implements _$$MemeBlocEventUpdateImplCopyWith<$Res> {
+  __$$MemeBlocEventUpdateImplCopyWithImpl(_$MemeBlocEventUpdateImpl _value,
+      $Res Function(_$MemeBlocEventUpdateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? meme = null,
+  }) {
+    return _then(_$MemeBlocEventUpdateImpl(
+      meme: null == meme
+          ? _value.meme
+          : meme // ignore: cast_nullable_to_non_nullable
+              as Meme,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MemeBlocEventUpdateImpl extends MemeBlocEventUpdate {
+  const _$MemeBlocEventUpdateImpl({required this.meme}) : super._();
+
+  @override
+  final Meme meme;
+
+  @override
+  String toString() {
+    return 'MemeBlocEvent.update(meme: $meme)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MemeBlocEventUpdateImpl &&
+            (identical(other.meme, meme) || other.meme == meme));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, meme);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MemeBlocEventUpdateImplCopyWith<_$MemeBlocEventUpdateImpl> get copyWith =>
+      __$$MemeBlocEventUpdateImplCopyWithImpl<_$MemeBlocEventUpdateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Meme meme) insert,
+    required TResult Function(Meme meme) update,
+  }) {
+    return update(meme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Meme meme)? insert,
+    TResult? Function(Meme meme)? update,
+  }) {
+    return update?.call(meme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Meme meme)? insert,
+    TResult Function(Meme meme)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(meme);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MemeBlocEventInsert value) insert,
+    required TResult Function(MemeBlocEventUpdate value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MemeBlocEventInsert value)? insert,
+    TResult? Function(MemeBlocEventUpdate value)? update,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MemeBlocEventInsert value)? insert,
+    TResult Function(MemeBlocEventUpdate value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MemeBlocEventUpdate extends MemeBlocEvent {
+  const factory MemeBlocEventUpdate({required final Meme meme}) =
+      _$MemeBlocEventUpdateImpl;
+  const MemeBlocEventUpdate._() : super._();
+
+  @override
+  Meme get meme;
+  @override
+  @JsonKey(ignore: true)
+  _$$MemeBlocEventUpdateImplCopyWith<_$MemeBlocEventUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

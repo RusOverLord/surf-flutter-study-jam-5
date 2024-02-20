@@ -7,7 +7,7 @@ import 'package:meme_generator/src/features/meme/widget/meme_list_widget.dart';
 class MemeListScreen extends StatelessWidget {
   const MemeListScreen({Key? key}) : super(key: key);
 
-  void _add(BuildContext context) => Navigator.pushNamed(context, Routes.home);
+  void _add(BuildContext context) => Navigator.pushNamed(context, Routes.home, );
 
   void _remove(BuildContext context) {
     final memeList = MemeListScope.memeList.read(context);

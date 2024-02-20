@@ -12,6 +12,10 @@ sealed class MemeBlocEvent with _$MemeBlocEvent {
   const factory MemeBlocEvent.insert({
     required Meme meme,
   }) = MemeBlocEventInsert;
+
+  const factory MemeBlocEvent.update({
+    required Meme meme,
+  }) = MemeBlocEventUpdate;
 }
 
 @freezed
@@ -71,6 +75,7 @@ class MemeBloc extends StreamBloc<MemeBlocEvent, MemeBlocState> {
   @override
   Stream<MemeBlocState> mapEventToStates(MemeBlocEvent event) => switch (event) {
         MemeBlocEventInsert event => _insert(event),
+        MemeBlocEventUpdate event => _update(event),
       }
           .distinct();
 
@@ -79,6 +84,18 @@ class MemeBloc extends StreamBloc<MemeBlocEvent, MemeBlocState> {
 
     try {
       await _repository.insert(event.meme);
+      yield state.toIdle(meme: event.meme);
+    } on Object catch (e) {
+      yield state.toError(error: e);
+      rethrow;
+    }
+  }
+
+  Stream<MemeBlocState> _update(MemeBlocEventUpdate event) async* {
+    yield state.toLoading();
+
+    try {
+      await _repository.update(event.meme);
       yield state.toIdle(meme: event.meme);
     } on Object catch (e) {
       yield state.toError(error: e);

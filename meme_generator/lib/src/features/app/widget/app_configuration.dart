@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meme_generator/src/features/meme/model/model.dart';
 import 'package:meme_generator/src/features/meme/widget/meme_generator_screen.dart';
 import 'package:meme_generator/src/features/meme/widget/meme_list_screen.dart';
 
@@ -16,14 +17,25 @@ class _AppConfigurationState extends State<AppConfiguration> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        routes: {
-          Routes.home: (context) => const MemeGeneratorScreen(),
-          Routes.list: (context) => const MemeListScreen(),
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute(
+            builder: (context) => switch (settings.name) {
+              Routes.home => MemeGeneratorScreen(
+                  meme: settings.arguments as Meme?,
+                ),
+              Routes.list => const MemeListScreen(),
+              _ => throw UnimplementedError(),
+            },
+          );
         },
+        // routes: {
+        //   Routes.home: (context) => const MemeGeneratorScreen(),
+        //   Routes.list: (context) => const MemeListScreen(),
+        // },
       );
 }
 
 abstract class Routes {
-  static String home = '/';
-  static String list = '/list';
+  static const home = '/';
+  static const list = '/list';
 }

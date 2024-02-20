@@ -28,7 +28,7 @@ class MemeRepository {
 
   Future<void> insert(Meme meme) => _db.into(_memes).insert(meme.toLocal());
 
-  Future<void> update(Meme meme) => _db.update(_memes).write(meme.toLocal());
+  Future<void> update(Meme meme) => _db.into(_memes).insertOnConflictUpdate(meme.toLocal());
 
   Future<void> delete(Meme meme) => _db.delete(_memes).delete(meme.toLocal());
 }

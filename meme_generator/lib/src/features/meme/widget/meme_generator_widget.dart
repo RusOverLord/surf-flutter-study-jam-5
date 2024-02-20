@@ -69,22 +69,38 @@ class _MemeGeneratorWidgetState extends State<MemeGeneratorWidget> {
   }
 
   void _save() {
-    final meme = model.Meme(
-      // не бейте ...
-      id: Random().nextInt(100000),
-      image: _imageOverride!,
-      text: model.Text(
-        value: _controller.text,
-        style: const TextStyle(
-          fontSize: 40,
-        ),
-      ),
-    );
-    MemeScope.bloc.read(context).add(
-          MemeBlocEvent.insert(
-            meme: meme,
+    final oldMeme = MemeScope.meme.read(context);
+    final isUpdate = oldMeme != null;
+    final bloc = MemeScope.bloc.read(context);
+
+    if (isUpdate) {
+      bloc.add(
+        MemeBlocEvent.update(
+          meme: oldMeme.copyWith(
+            image: _imageOverride ?? oldMeme.image,
+            text: oldMeme.text.copyWith(
+              value: _controller.text,
+            ),
           ),
-        );
+        ),
+      );
+    } else {
+      bloc.add(
+        MemeBlocEvent.insert(
+          meme: model.Meme(
+            // не бейте ...
+            id: Random().nextInt(100000),
+            image: _imageOverride!,
+            text: model.Text(
+              value: _controller.text,
+              style: const TextStyle(
+                fontSize: 40,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
   }
 
   void _toList(BuildContext context) => Navigator.pushNamed(context, Routes.list);
@@ -223,7 +239,8 @@ class _MemeTextWidgetState extends State<_MemeTextWidget> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final text = MemeScope.meme.text.watch(context);
-    /// не успел настроить сохранение цвета
+
+    /// не успел настроить сохранение
     _style = (text?.style ?? textStyle).copyWith(color: Colors.white);
   }
 
