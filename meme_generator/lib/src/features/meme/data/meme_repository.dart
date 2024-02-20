@@ -37,7 +37,7 @@ extension on Meme {
   local.Meme toLocal() {
     final (imageType, imageSource) = switch (image) {
       ImageLocal(file: final file) => (local.ImageType.local, file.path),
-      ImageRemote(url: final url) => (local.ImageType.remote, url.path),
+      ImageRemote(url: final url) => (local.ImageType.remote, url.toString()),
     };
 
     return local.Meme(
