@@ -4,6 +4,7 @@
 - drift - локальная база данных (в packages/local_database)
 - image_picker - выбор изображения из галереи
 - share_plus - поделиться
+- freezed - генерация дата-классов
 
 **Базовый уровень**
 
